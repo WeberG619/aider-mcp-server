@@ -68,3 +68,18 @@ focus_output/
 # Log files
 logs/
 *.log
+
+# C# files (not part of this Python project)
+*.cs
+
+# Revit bridge (separate project)
+RevitMCPBridge2026/
+
+# Build files (Gradle)
+build.gradle.kts
+gradle.properties
+
+# Misc
+circle_area.py
+data/
+requirements.txt
