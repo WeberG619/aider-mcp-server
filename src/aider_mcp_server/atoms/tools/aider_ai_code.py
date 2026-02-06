@@ -7,7 +7,6 @@ from aider.models import Model
 from aider.coders import Coder
 from aider.io import InputOutput
 from aider_mcp_server.atoms.logging import get_logger
-from aider_mcp_server.atoms.utils import DEFAULT_EDITOR_MODEL
 
 # Configure logging for this module
 logger = get_logger(__name__)
@@ -17,7 +16,7 @@ ResponseDict = Dict[str, Union[bool, str]]
 
 
 def _get_changes_diff_or_content(
-    relative_editable_files: List[str], working_dir: str = None
+    relative_editable_files: List[str], working_dir: Optional[str] = None
 ) -> str:
     """
     Get the git diff for the specified files, or their content if git fails.
@@ -80,7 +79,7 @@ def _get_changes_diff_or_content(
 
 
 def _check_for_meaningful_changes(
-    relative_editable_files: List[str], working_dir: str = None
+    relative_editable_files: List[str], working_dir: Optional[str] = None
 ) -> bool:
     """
     Check if the edited files contain meaningful content.
@@ -132,7 +131,7 @@ def _check_for_meaningful_changes(
 
 
 def _process_coder_results(
-    relative_editable_files: List[str], working_dir: str = None
+    relative_editable_files: List[str], working_dir: Optional[str] = None
 ) -> ResponseDict:
     """
     Process the results after Aider has run, checking for meaningful changes
@@ -183,8 +182,8 @@ def code_with_aider(
     ai_coding_prompt: str,
     relative_editable_files: List[str],
     relative_readonly_files: List[str] = [],
-    model: str = DEFAULT_EDITOR_MODEL,
-    working_dir: str = None,
+    model: str = "gemini/gemini-2.5-pro-exp-03-25",
+    working_dir: Optional[str] = None,
 ) -> str:
     """
     Run Aider to perform AI coding tasks based on the provided prompt and files.
@@ -193,7 +192,7 @@ def code_with_aider(
         ai_coding_prompt (str): The prompt for the AI to execute.
         relative_editable_files (List[str]): List of files that can be edited.
         relative_readonly_files (List[str], optional): List of files that can be read but not edited. Defaults to [].
-        model (str, optional): The model to use. Defaults to DEFAULT_EDITOR_MODEL.
+        model (str, optional): The model to use. Defaults to "gemini/gemini-2.5-pro-exp-03-25".
         working_dir (str, required): The working directory where git repository is located and files are stored.
 
     Returns:

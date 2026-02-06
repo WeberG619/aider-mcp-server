@@ -267,7 +267,7 @@ def handle_request(
 
 async def serve(
     editor_model: str = DEFAULT_EDITOR_MODEL,
-    current_working_dir: str = None,
+    current_working_dir: Optional[str] = None,
 ) -> None:
     """
     Start the MCP server following the Model Context Protocol.
@@ -308,7 +308,7 @@ async def serve(
     os.chdir(current_working_dir)
 
     # Create the MCP server
-    server = Server("aider-mcp-server")
+    server: Server = Server("aider-mcp-server")
 
     @server.list_tools()
     async def list_tools() -> List[Tool]:

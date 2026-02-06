@@ -5,7 +5,7 @@ from pydantic import BaseModel, Field
 class MCPRequest(BaseModel):
     """Base class for MCP protocol requests."""
     name: str
-    parameters: Dict[str, Any]
+    parameters: Any
 
 class MCPResponse(BaseModel):
     """Base class for MCP protocol responses."""

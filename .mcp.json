@@ -1,19 +1,46 @@
 {
   "mcpServers": {
-    "aider-mcp-server": {
+    "aider-mcp-server-ollama": {
       "type": "stdio",
-      "command": "uv",
+      "command": "python3",
       "args": [
-        "--directory",
-        ".",
-        "run",
-        "aider-mcp-server",
+        "/mnt/d/aider-mcp-server/run_server.py",
         "--editor-model",
-        "gemini/gemini-2.5-pro-preview-03-25",
+        "ollama/llama3",
         "--current-working-dir",
-        "."
+        "/mnt/d"
       ],
-      "env": {}
+      "env": {
+        "PYTHONPATH": "/mnt/d/aider-mcp-server/src"
+      }
+    },
+    "aider-mcp-server-llama4": {
+      "type": "stdio",
+      "command": "python3",
+      "args": [
+        "/mnt/d/aider-mcp-server/run_server.py",
+        "--editor-model",
+        "fireworks_ai/accounts/fireworks/models/llama4-maverick-instruct-basic",
+        "--current-working-dir",
+        "/mnt/d"
+      ],
+      "env": {
+        "PYTHONPATH": "/mnt/d/aider-mcp-server/src"
+      }
+    },
+    "aider-mcp-server-quasar": {
+      "type": "stdio",
+      "command": "python3",
+      "args": [
+        "/mnt/d/aider-mcp-server/run_server.py",
+        "--editor-model",
+        "openrouter/openrouter/quasar-alpha",
+        "--current-working-dir",
+        "/mnt/d"
+      ],
+      "env": {
+        "PYTHONPATH": "/mnt/d/aider-mcp-server/src"
+      }
     }
   }
 }
